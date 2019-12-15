@@ -1,0 +1,27 @@
+name: Deploy to Workers Prod
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Install Dependencies
+        run: sudo npm install
+
+      - name: Install Wrangler
+        run: sudo npm i @cloudflare/wrangler gatsby -g
+
+      - name: Build
+        run: gatsby build
+
+      - name: Publish to Workers Sites
+        uses: cloudflare/wrangler-action@1.1.0
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
