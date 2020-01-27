@@ -4,3 +4,6 @@ zone_id = "fb6e5abef08ef4457ed805d54ff21c3d"
 private = false
 account_id = "26f93b0e71bc3fcf5e9f93db4e12ca13"
 route = "isolates.org/*"
+
+[site]
+bucket = "./public"
